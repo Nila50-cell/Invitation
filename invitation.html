@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শুভ অন্নপ্রাশন - শ্রেয়াংশ পণ্ডা</title>
+    <!-- Importing Bengali Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #7B2D5E; /* Slightly darker for better contrast on glass */
+            --primary-green: #2E5A3B; /* Darker green */
+            --accent-orange: #E68A00;
+            --text-dark: #2c3e50;
+            --glass-bg: rgba(255, 255, 255, 0.35);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #f7f3f0;
+            font-family: 'Hind Siliguri', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Background Blur Shapes for Glassmorphism --- */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: #FFD6E0; /* Soft pink */
+            top: -100px;
+            left: -100px;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: #B5FFFC; /* Soft cyan */
+            bottom: -150px;
+            right: -100px;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: #FFEBA8; /* Soft yellow */
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Container styling - The Glass Card */
+        .invitation-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); /* Safari support */
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- PAGE 1: COVER --- */
+        .cover {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Decorative Hanging Strings */
+        .hanging-decor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            pointer-events: none;
+        }
+
+        .string {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: sway 3s infinite ease-in-out alternate;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1)); /* Adds depth to emojis */
+        }
+
+        .string:nth-child(even) { animation-delay: 1s; }
+        .string:nth-child(odd) { animation-delay: 0.5s; }
+
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+
+        .flower { font-size: 24px; margin-bottom: 5px; }
+        .bell { font-size: 20px; }
+
+        .cover h1 {
+            font-family: 'Galada', cursive;
+            color: var(--primary-purple);
+            font-size: 3.8rem;
+            margin: 80px 0 20px 0;
+            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .cover .quote {
+            color: var(--primary-purple);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 30px auto;
+            max-width: 80%;
+            line-height: 1.8;
+            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .cover .sign-off {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .cover .to-line {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 40px;
+            border-top: 1px dashed rgba(46, 90, 59, 0.3);
+            padding-top: 20px;
+            display: inline-block;
+        }
+
+        .baby-icon {
+            font-size: 90px;
+            margin: 20px 0;
+            animation: bounce 2s infinite ease-in-out;
+            filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.15));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- PAGE 2: DETAILS --- */
+        .details {
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+        }
+
+        .details h2 {
+            font-family: 'Galada', cursive;
+            color: var(--primary-green);
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .details h3 {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        .family-list {
+            list-style: none;
+            padding: 0;
+            max-width: 450px;
+            margin: 30px auto;
+            text-align: left;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+        }
+
+        .family-list li {
+            margin-bottom: 12px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(0,0,0,0.05);
+            padding-bottom: 5px;
+        }
+
+        .family-list li span {
+            font-weight: 500;
+            color: var(--primary-green);
+        }
+
+        .event-box {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .event-box h4 {
+            color: var(--primary-purple);
+            font-size: 1.3rem;
+            margin: 15px 0 5px 0;
+            font-weight: 700;
+        }
+
+        .event-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* --- PAGE 3: FORMAL INVITE --- */
+        .formal-invite {
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .formal-invite h2 {
+            text-align: center;
+            color: var(--accent-orange);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .prayer-icon {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .letter-content {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            text-align: justify;
+            padding: 0 20px;
+        }
+
+        .salutation {
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--primary-purple);
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+        }
+
+        .request-line {
+            margin-top: 40px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-indent: 0 !important;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding: 0 20px;
+            color: var(--primary-purple);
+            font-weight: 700;
+        }
+
+        .sig-right {
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .address {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.3);
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .invitation-container {
+                margin: 15px;
+                border-radius: 16px;
+            }
+            .cover h1 { font-size: 2.8rem; }
+            .cover .quote { font-size: 1.1rem; }
+            .details, .formal-invite { padding: 40px 20px; }
+            .family-list li { flex-direction: column; margin-bottom: 15px; text-align: center; }
+            .family-list li span { margin-top: 5px; }
+            .signatures { flex-direction: column; gap: 30px; text-align: center; }
+            .sig-right { text-align: center; }
+            .letter-content { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Blur Shapes for Glass Effect -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <div class="invitation-container">
+        
+        <!-- PAGE 1: COVER -->
+        <section class="cover">
+            <div class="hanging-decor">
+                <div class="string"><div class="flower">🏵️</div><div class="flower">🏵️</div><div class="bell">🔔</div></div>
+                <div class="string"><div class="flower">🏵️</div><div class="bell">🔔</div></div>
+                <div class="string"><div class="flower">🏵️</div><div class="flower">🏵️</div><div class="bell">🔔</div></div>
+                <div class="string"><div class="flower">🏵️</div><div class="bell">🔔</div></div>
+                <div class="string"><div class="flower">🏵️</div><div class="flower">🏵️</div><div class="bell">🔔</div></div>
+            </div>
+
+            <div class="baby-icon">👶</div>
+            <h1>শুভ অন্নপ্রাশন</h1>
+            
+            <div class="quote">
+                বড়োরা সবাই করছে এই ছোট আয়োজন,<br>
+                আমার মুখে ভাতে কিন্তু সবার নিমন্ত্রণ।
+            </div>
+
+            <div class="sign-off">
+                ইতি -<br>
+                তোমাদের তাতান
+            </div>
+
+            <div class="to-line">
+                প্রতি :- মহাশয় / মহাশয়া
+            </div>
+        </section>
+
+        <!-- PAGE 2: DETAILS -->
+        <section class="details">
+            <h2>পরিচিতি</h2>
+            <h3>আমি শ্রেয়াংশ পণ্ডা</h3>
+
+            <ul class="family-list">
+                <li>পিতা <span>-- শ্রী অনিমেষ পণ্ডা</span></li>
+                <li>মাতা <span>-- শ্রীমতি শোভনা পণ্ডা</span></li>
+                <li>দাদান <span>-- শ্রী মুক্তি পদ পণ্ডা</span></li>
+                <li>ঠাম্মি <span>-- শ্রীমতি ছন্দা পণ্ডা</span></li>
+                <li>কাকাই <span>-- শ্রী নীলমেষ পণ্ডা</span></li>
+                <li>দাদাই <span>-- শ্রী স্বপন কুমার নন্দ</span></li>
+                <li>দিদু <span>-- শ্রীমতি সুপ্রভা নন্দ</span></li>
+            </ul>
+
+            <div class="event-box">
+                <h4>মাঙ্গলিক অনুষ্ঠান</h4>
+                <p>২৫ শে কার্তিক (ইং: ১২ ই নভেম্বর) বৃহস্পতিবার।</p>
+                
+                <h4>প্রীতিভোজ</h4>
+                <p>২৬ শে কার্তিক (ইং: ১৩ ই নভেম্বর) শুক্রবার।</p>
+                
+                <h4>স্থান</h4>
+                <p>মাতৃ ভবন, আলামচক বেলদা, পূর্ব মেদিনীপুর।</p>
+            </div>
+        </section>
+
+        <!-- PAGE 3: FORMAL INVITATION -->
+        <section class="formal-invite">
+            <h2>নমোঃ নারায়ণায় নমঃ</h2>
+            <div class="prayer-icon">🙏</div>
+
+            <div class="letter-content">
+                <p class="salutation">মহাশয়/মহাশয়া</p>
+                
+                <p>বর্তমান বর্ষের আগামী ২৫ শে কার্তিক ১৪৩০ সাল (ইং: ১২ ই নভেম্বর) বৃহস্পতিবার আমাদের জ্যেষ্ঠ পুত্র কল্যাণীয় অনিমেষ পণ্ডা ও পুত্রবধূ শ্রীমতি শোভনা পণ্ডার পুত্র শ্রীমান শ্রেয়াংশ পণ্ডা অর্থাৎ আমাদের পরম আদরণীয় দাদুভাই এর শুভ অন্নপ্রাশন অনুষ্ঠান অনুষ্ঠিত হইবে।</p>
+                
+                <p>উক্ত আনন্দ অনুষ্ঠান উপলক্ষে আয়োজিত প্রীতিভোজে আগামী ২৬ শে কার্তিক ১৪৩০ সাল (ই: ১৩ ই নভেম্বর) শুক্রবার দ্বিপ্রহরে আপনি / আপনার অংশগ্রহণ পূর্বক আমাদের দাদুভাইয়ের মঙ্গল কামনায় আশীর্বাদ করিয়া বাধিত করিবেন।</p>
+                
+                <p class="request-line">নিমন্ত্রণে কৃতি মার্জনীয়।</p>
+
+                <div class="signatures">
+                    <div class="sig-left">
+                        তাং
+                    </div>
+                    <div class="sig-right">
+                        বিনীত<br><br>
+                        মুক্তি পদ পণ্ডা<br>(দাদান)<br><br>
+                        ছন্দা পণ্ডা<br>(ঠাম্মি)
+                    </div>
+                </div>
+
+                <div class="address">
+                    বেলদা<br>
+                    পূর্ব মেদিনীপুর
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
